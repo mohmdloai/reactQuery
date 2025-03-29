@@ -4,37 +4,39 @@ import Loader from "./Loader";
 // import '../index.css'
 
 const Todo = () => {
-  const getMutation = useMutation({
-    mutationFn: async () =>
-      await fetch("https://jsonplaceholder.typicode.com/todos").then((res) =>
-        res.json()
-      ),
-    onSuccess: () => {
-      console.log("Data fetched successfully");
-    },
-  });
-  /*
-  const { data,isLoading } = useQuery({
+  // const getMutation = useMutation({
+  //   mutationFn: async () =>
+  //     await fetch("https://jsonplaceholder.typicode.com/todos").then((res) =>
+  //       res.json()
+  //     ),
+  //   onSuccess: () => {
+  //     console.log("Data fetched successfully");
+  //   },
+  // });
+
+  const { data, isLoading } = useQuery({
     queryKey: ["todos"],
     queryFn: async () =>
-      fetch("https://jsonplaceholder.typicode.com/todos").then((res) =>
-        res.json()
-      ),
+      fetch("http://localhost:3000/todo").then((res) => res.json()),
   });
-*/
-  if (getMutation.isPending) {
+
+  // if (getMutation.isPending) {
+  //   return <Loader />;
+  // }
+
+  if (isLoading) {
     return <Loader />;
   }
-  console.log(getMutation);
+  // console.log(getMutation);
   // console.log(getMutation.data);
   // console.log(getMutation.status);
 
   return (
     <>
-      <button onClick={() => getMutation.mutate()}>Fetch Todos</button>
+      {/* <button onClick={() => getMutation.mutate()}>Fetch Todos</button> */}
       <div className="container">
-        {getMutation.data &&
-          getMutation.data?.map((todo) => (
+        {data &&
+          data?.map((todo) => (
             <div
               className={`todo ${todo.completed ? "Completed" : "Pending"}`}
               key={todo.id}

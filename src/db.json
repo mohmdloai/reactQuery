@@ -1,0 +1,22 @@
+{
+  "todo": [
+    {
+      "id": 1,
+      "title": "Learn React",
+      "description": "start learning react from Youtube",
+      "completed": true
+    },
+    {
+      "id": 2,
+      "title": "Learn Redux",
+      "description": "redux tool kit",
+      "completed": false
+    },
+    {
+      "id": 3,
+      "title": "Learn React Router",
+      "description": "react router dom ",
+      "completed": false
+    }
+  ]
+}
